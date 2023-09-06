@@ -1,41 +1,27 @@
-import './App.css'
-import { createClient } from 'contentful'
-require('dotenv').config(); 
-
-const client = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN,
-})
-
-const fetcher = async () => {
-  const entryItems = await client.getEntries({ content_type: 'Artikel' })
-  const tagItems = await client.getTags()
-
-  const tags = tagItems.items.map((tag) => tag.name)
-
-  // Process the data from the Contentful REST API into a neater object
-  // If you want to avoid this step, consider using the GraphQL API
-  const entries = entryItems.items.map((entry) => {
-    const { fields } = entry
-    return {
-      Name: fields.name,
-      Artikel: fields.Artikel,
-    }
-  })
-
-  return { entries, tags }
-}
+import { useState, useEffect } from "react";
+import useContentful from "./hooks/useContentful";
+import "./App.css";
 
 function App() {
-  
+  const [marvel, setMarvel] = useState([]);
+  const { getMarvel } = useContentful();
 
+  useEffect(() => {
+    getMarvel().then((response) => setMarvel(response));
+  }, []);
+  console.log(marvel);
   return (
-    <>
-    {fetcher.map((e) => {
-      <div>{e}</div>
-    })}  
-    </>
-  )
+    <div>
+      <h1>Test</h1>
+      {marvel.map((item, index) => {
+        return (
+          <div key={index} className="marvel">
+            <img src={item.heroImage.file.url} />
+            <h3>{item.name}</h3>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
-
-export default App
+export default App;
