@@ -14,6 +14,7 @@ const useContentful = () => {
         //order: "fields.name",
         //"fields.name": "filterName"
       });
+      console.log(entries)
       const sanitizedEntries = entries.items.map((item) => {
         const heroImage = item.fields.heroImage.fields;
         return {
@@ -28,6 +29,7 @@ const useContentful = () => {
   };
 
   return { getMarvel };
+
 };
 
 export default useContentful;

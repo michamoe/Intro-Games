@@ -1,8 +1,19 @@
 import React from 'react'
 
-function start() {
+
+function start({marvel}) {
   return (
-    <div>start</div>
+    <>
+    <h1>Test</h1>
+    {marvel.map((item, index) => {
+      return (
+        <div key={index} className="marvel">
+          <img src={item.heroImage.file.url} />
+          <h3>{item.name}</h3>
+        </div>
+      );
+    })}
+</>
   )
 }
 

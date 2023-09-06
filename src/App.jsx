@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import useContentful from "./hooks/useContentful";
 import "./App.css";
+import { Routes, Route, NavLink } from "react-router-dom";
+import Start from "./component/Start";
+import Games from "./component/Games";
+import ArticleGames from "./component/ArticleGames";
 
 function App() {
   const [marvel, setMarvel] = useState([]);
@@ -9,18 +13,14 @@ function App() {
   useEffect(() => {
     getMarvel().then((response) => setMarvel(response));
   }, []);
-  console.log(marvel);
+  // console.log(marvel);
   return (
     <div>
-      <h1>Test</h1>
-      {marvel.map((item, index) => {
-        return (
-          <div key={index} className="marvel">
-            <img src={item.heroImage.file.url} />
-            <h3>{item.name}</h3>
-          </div>
-        );
-      })}
+      <Routes>
+        <Route path="/" element={<Start marvel={marvel} />} />
+        <Route path="/games" element={<Games marvel={marvel} />} />
+        <Route path="/articles" element={<ArticleGames marvel={marvel} />} />
+      </Routes>
     </div>
   );
 }
