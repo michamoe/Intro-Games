@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import useContentful from "./hooks/useContentful";
 import "./App.css";
 import { Routes, Route, NavLink } from "react-router-dom";
 import NavBar from "./component/NavBar";
