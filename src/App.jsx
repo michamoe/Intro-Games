@@ -4,6 +4,7 @@ import NavBar from "./component/NavBar";
 import Start from "./component/Start";
 import Games from "./component/Games";
 import ArticleGames from "./component/ArticleGames";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
