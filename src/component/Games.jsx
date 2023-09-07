@@ -12,6 +12,19 @@ function Games() {
 
   if (!games) {
     return "Loading...";
+  } else {
+    //console.log(games);
+    //assets: games.includes.Asset[]
+    //destruct test
+    games.items.map(
+      ({
+        sys: { id },
+        fields: { name, bilder, company, published, rating },
+      }) => {
+        //get image asset-id
+        console.log(bilder[0].sys.id);
+      }
+    );
   }
 
   return (
