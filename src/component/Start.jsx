@@ -1,20 +1,12 @@
-import React from 'react'
-
-
-function start({marvel}) {
+function start() {
   return (
     <>
-    <h1>Test</h1>
-    {marvel.map((item, index) => {
-      return (
-        <div key={index} className="marvel">
-          <img src={item.heroImage.file.url} />
-          <h3>{item.name}</h3>
-        </div>
-      );
-    })}
-</>
-  )
+      <main>
+        <h1>Start Page</h1>
+        <div>Cool things will happen here!</div>
+      </main>
+    </>
+  );
 }
 
-export default start
+export default start;

@@ -1,6 +1,24 @@
-div.marvel {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: center;
+nav {
+  margin: 0ch;
+  font-family: sans-serif;
+  display: block;
+}
+nav > ul {
+  list-style: none;
+}
+.links > li {
+  display: inline-block;
+  width: 150px;
+  margin-left: 2px;
+}
+main {
+  margin: 0px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.links > li > a.active {
+  background-color: grey;
 }

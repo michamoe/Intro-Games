@@ -6,30 +6,21 @@ const useContentful = () => {
     accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN,
   });
 
-  const getMarvel = async () => {
+  const getContent = async (type) => {
     try {
       const entries = await client.getEntries({
-        content_type: "marvel",
+        content_type: type,
         select: "fields",
         //order: "fields.name",
         //"fields.name": "filterName"
       });
-      console.log(entries)
-      const sanitizedEntries = entries.items.map((item) => {
-        const heroImage = item.fields.heroImage.fields;
-        return {
-          ...item.fields,
-          heroImage,
-        };
-      });
-      return sanitizedEntries;
+      return entries;
     } catch (error) {
       console.log("Error fetching: ", error);
     }
   };
 
-  return { getMarvel };
-
+  return { getContent };
 };
 
 export default useContentful;
