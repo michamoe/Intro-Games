@@ -14,6 +14,7 @@ const useContentful = () => {
         //order: "fields.name",
         //"fields.name": "filterName"
       });
+
       return entries;
     } catch (error) {
       console.log("Error fetching: ", error);
