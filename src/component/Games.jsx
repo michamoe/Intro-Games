@@ -9,24 +9,7 @@ function Games() {
   useEffect(() => {
     getContent("game").then((response) => setGames(response));
   }, []);
-
-  if (!games) {
-    return "Loading...";
-  } else {
-    //console.log(games);
-    //assets: games.includes.Asset[]
-    //destruct test
-    games.items.map(
-      ({
-        sys: { id },
-        fields: { name, bilder, company, published, rating },
-      }) => {
-        //get image asset-id
-        console.log(bilder[0].sys.id);
-      }
-    );
-  }
-
+  console.log(games);
   return (
     <>
       <h1>Games</h1>
@@ -37,7 +20,20 @@ function Games() {
               <div className="games" key={key}>
                 <h2>{game.fields.name}</h2>
                 <div>{game.fields.published}</div>
+                <div>{game.fields.company}</div>
                 <div>{game.fields.rating}</div>
+                <div>
+                  {game.fields.bilder?.map((bild, id, key) => (
+                    <img key={key} src={bild.fields.file.url} />
+                  ))}
+                  {/* {game.fields.bilder?.map((bild, id, key) =>
+                    id === 0 ? (
+                      <img key={key} src={bild.fields.file.url} />
+                    ) : (
+                      <></>
+                    )
+                  )} */}
+                </div>
               </div>
             );
           })
