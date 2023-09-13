@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import useContentful from "../hooks/useContentful";
+import NavBar from "./NavBar";
 import React from "react";
 import './games.css';
 
