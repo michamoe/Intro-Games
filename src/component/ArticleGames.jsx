@@ -33,6 +33,7 @@ function ArticleGames() {
 
   return (
     <>
+      <NavBar />
       <div>
         {articles
           ? articles.items.map((article, key) => {
