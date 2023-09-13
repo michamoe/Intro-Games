@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import useContentful from "../hooks/useContentful";
 import React from "react";
+import './games.css';
 
 function Games() {
   const [games, setGames] = useState();
@@ -12,18 +13,19 @@ function Games() {
   console.log(games);
   return (
     <>
-      <NavBar />
-      <h1>Games</h1>
-      <div>List of games here!</div>
+     <div className="all">
+      <h1 className="head">Indi + Retro Games</h1>
       {games
         ? games.items.map((game, key) => {
             return (
               <div className="games" key={key}>
-                <h2>{game.fields.name}</h2>
-                <div>{game.fields.published}</div>
-                <div>{game.fields.company}</div>
-                <div>{game.fields.rating}</div>
-                <div>
+                <div className="content">
+                  <h2>{game.fields.name}</h2>
+                  <div className="published">{game.fields.published}</div>
+                  <div className="company">{game.fields.company}</div>
+                  <div className="rating">{game.fields.rating}</div>
+                </div>
+                <div className="images">
                   {game.fields.bilder?.map((bild, id, key) => (
                     <img key={key} src={bild.fields.file.url} />
                   ))}
@@ -39,6 +41,7 @@ function Games() {
             );
           })
         : "No Results"}
+      </div>
     </>
   );
 }
