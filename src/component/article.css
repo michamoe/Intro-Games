@@ -1,0 +1,14 @@
+.articlebg {
+  background-image: url(./src/assets/synthwave1.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.article {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 900px;
+  background-color: #9240f1;
+}
