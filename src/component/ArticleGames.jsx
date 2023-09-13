@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import useContentful from "../hooks/useContentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import NavBar from "./NavBar";
 
 function ArticleGames() {
   const [articles, setArticles] = useState();

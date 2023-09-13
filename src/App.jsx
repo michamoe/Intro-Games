@@ -1,6 +1,5 @@
 import "./App.css";
 import { Routes, Route, NavLink } from "react-router-dom";
-import NavBar from "./component/NavBar";
 import Start from "./component/Start";
 import Games from "./component/Games";
 import ArticleGames from "./component/ArticleGames";

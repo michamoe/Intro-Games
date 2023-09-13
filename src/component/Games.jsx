@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import useContentful from "../hooks/useContentful";
-import React from "react";
+import NavBar from "./NavBar";
 
 function Games() {
   const [games, setGames] = useState();
