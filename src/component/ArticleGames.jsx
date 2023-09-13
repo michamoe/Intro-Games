@@ -3,6 +3,7 @@ import useContentful from "../hooks/useContentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import NavBar from "./NavBar";
+import "./article.css";
 
 function ArticleGames() {
   const [articles, setArticles] = useState();
@@ -35,20 +36,23 @@ function ArticleGames() {
   return (
     <>
       <NavBar />
-      <div>
-        {articles
-          ? articles.items.map((article, key) => {
-              return (
-                <div className="article" key={key}>
-                  <h2>{article.fields.title}</h2>
-                  {documentToReactComponents(
-                    article.fields.richText,
-                    renderOptions
-                  )}
-                </div>
-              );
-            })
-          : "No Results"}
+
+      <div className="articlebg">
+        <div className="container">
+          {articles
+            ? articles.items.map((article, key) => {
+                return (
+                  <div className="article" key={key}>
+                    <h2>{article.fields.title}</h2>
+                    {documentToReactComponents(
+                      article.fields.richText,
+                      renderOptions
+                    )}
+                  </div>
+                );
+              })
+            : "No Results"}
+        </div>
       </div>
     </>
   );
