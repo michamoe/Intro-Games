@@ -12,6 +12,7 @@ function Games() {
   console.log(games);
   return (
     <>
+      <NavBar />
       <h1>Games</h1>
       <div>List of games here!</div>
       {games

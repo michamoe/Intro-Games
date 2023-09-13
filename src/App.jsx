@@ -9,7 +9,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <>
-      <NavBar />
       <Routes>
         <Route path="/" element={<Start />} />
         <Route path="/games" element={<Games />} />
