@@ -10,9 +10,8 @@ function Games() {
   const { getContent } = useContentful();
 
   useEffect(() => {
-    getContent("game").then((response) => setGames(response));
+    getContent("game", "fields.rating").then((response) => setGames(response));
   }, []);
-  console.log(games);
   return (
     <>
       <NavBar />
@@ -21,8 +20,8 @@ function Games() {
         {games
           ? games.items.map((game, key) => {
               return (
-                <div className="games">
-                  <div className="row" key={key}>
+                <div className="games" key={key}>
+                  <div className="row">
                     <div className="col d-flex justify-content-center">
                       <h2>{game.fields.name}</h2>
                     </div>
@@ -37,7 +36,7 @@ function Games() {
                     <div className="col">
                       <div className="rating">
                         <ProgressBar
-                          key={key}
+                          key={"progress" + key}
                           now={game.fields.rating}
                           label={`Rating: ${game.fields.rating} / 100`}
                         />
@@ -48,7 +47,7 @@ function Games() {
                     {game.fields.bilder?.map((bild, id, key) => (
                       <div
                         className="col d-flex justify-content-center"
-                        key={key}
+                        key={"img" + id + key}
                       >
                         <div className="images">
                           <img src={bild.fields.file.url} />
