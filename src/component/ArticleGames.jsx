@@ -26,7 +26,7 @@ function ArticleGames() {
   };
 
   useEffect(() => {
-    getContent("article").then((response) => setArticles(response));
+    getContent("article", "").then((response) => setArticles(response));
   }, []);
 
   if (!articles) {

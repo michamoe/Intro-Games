@@ -6,22 +6,34 @@ const useContentful = () => {
     accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN,
   });
 
-  const getContent = async (type) => {
+  const getContent = async (type, sort) => {
     try {
       const entries = await client.getEntries({
         content_type: type,
         select: "fields",
-        //order: "fields.name",
-        //"fields.name": "filterName"
+        order: sort,
       });
-
       return entries;
     } catch (error) {
       console.log("Error fetching: ", error);
     }
   };
 
-  return { getContent };
+  const searchArchivedGames = async (type) => {
+    try {
+      const entries = await client.getEntries({
+        content_type: type,
+        select: "fields",
+        limit: 1000,
+        //"fields.name[match]": search,
+      });
+      return entries;
+    } catch (error) {
+      console.log("Error fetching: ", error);
+    }
+  };
+
+  return { getContent, searchArchivedGames };
 };
 
 export default useContentful;
