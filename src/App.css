@@ -2,6 +2,7 @@ nav {
   margin: 10px;
   font-family: sans-serif;
   display: block;
+  background-color: rgb(56, 22, 137);
 }
 nav > ul {
   list-style: none;
@@ -82,4 +83,8 @@ a {
   min-width: 300px;
   margin-bottom: 10px;
   z-index: 11;
+}
+
+.searchresults {
+  margin-top: 10px;
 }
