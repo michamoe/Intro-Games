@@ -50,3 +50,9 @@
 div.progress {
   height: 35px;
 }
+
+.btn button {
+  background-color: #88d4ff;
+  color: #381689
+}
+
