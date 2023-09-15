@@ -2,21 +2,56 @@ import { useState, useEffect } from "react";
 import { ProgressBar } from "react-bootstrap";
 import useContentful from "../hooks/useContentful";
 import NavBar from "./NavBar";
-import React from "react";
 import "./games.css";
 
 function Games() {
   const [games, setGames] = useState();
   const { getContent } = useContentful();
+  const [sort, setSort] = useState();
 
+  const sortList = ["fields.rating", "-fields.rating", "fields.published", "-fields.published", 
+                    "fields.company", "-fields.company"];
+  
+  const ratingUp = () => {
+    setSort(sortList[0]) 
+  }
+  const ratingDown = () => {
+    setSort(sortList[1]) 
+  }
+  const publishedUp = () => {
+    setSort(sortList[2]) 
+  }
+  const publishedDown = () => {
+    setSort(sortList[3]) 
+  }
+  const companyUp = () => {
+    setSort(sortList[4]) 
+  }
+  const companyDown = () => {
+    setSort(sortList[5]) 
+  }
+
+  
   useEffect(() => {
-    getContent("game", "fields.rating").then((response) => setGames(response));
+    getContent("game", "fields.published").then((response) => setGames(response));
   }, []);
+  useEffect(() => {
+    getContent("game", sort).then((response) => setGames(response));
+  }, [sort]);
   return (
     <>
       <NavBar />
       <div className="all">
-        <h1 className="head">Indi + Retro Games</h1>
+        <h1 className="head">Indie + Retro Games</h1>
+        <div className="btn">
+          <button className='ratingup-btn' onClick={ratingUp}>Rating ↑</button>
+          <button className='ratingdown-btn' onClick={ratingDown}>Rating ↓</button>
+          <button className='publishedup-btn' onClick={publishedUp}>Published ↑</button>
+          <button className='publisheddown-btn' onClick={publishedDown}>Published ↓</button>
+          <button className='companyup-btn' onClick={companyUp}>Company ↑</button>
+          <button className='companydown-btn' onClick={companyDown}>Company ↓</button>
+        </div>
+        
         {games
           ? games.items.map((game, key) => {
               return (
@@ -65,3 +100,27 @@ function Games() {
 }
 
 export default Games;
+
+
+/*
+const sortFun = {
+    ratingUp: () => setSort(sortList[0]),
+    ratingDown: () => setSort(sortList[1]),
+    publishedUp: () => setSort(sortList[2]),
+    publishedDown: () => setSort(sortList[3]),
+    companyUp: () => setSort(sortList[4]),
+    companyDown: () => setSort(sortList[5]),
+  };
+
+  return (
+    <div>
+      <button onClick={sortFun.ratingUp}>Rating Up</button>
+      <button onClick={sortFun.ratingDown}>Rating Down</button>
+      <button onClick={sortFun.publishedUp}>Published Up</button>
+      <button onClick={sortFun.publishedDown}>Published Down</button>
+      <button onClick={sortFun.companyUp}>Company Up</button>
+      <button onClick={sortFun.companyDown}>Company Down</button>
+    </div>
+  );
+}
+*/
