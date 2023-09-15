@@ -23,7 +23,7 @@ const useContentful = () => {
     try {
       const entries = await client.getEntries({
         content_type: type,
-        select: "fields",
+        select: "fields.name",
         limit: 1000,
         //"fields.name[match]": search,
       });
