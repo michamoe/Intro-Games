@@ -1,12 +1,10 @@
 {
   "name": "intro-games",
-  "homepage": "https://michamoe.github.io/Intro-Games/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
@@ -17,7 +15,6 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.1",
     "contentful": "^10.5.1",
-    "gh-pages": "^6.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
