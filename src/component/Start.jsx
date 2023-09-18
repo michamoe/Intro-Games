@@ -21,7 +21,10 @@ function start() {
   return (
     <>
       <div className="gradient"></div>
-      <main className="container">
+      <div className="wave"></div>
+      <div className="wave"></div>
+      <div className="wave"></div>
+      <main className="start container">
         <div className="start">
           <div>
             <Button variant="warning" onClick={goArticles}>

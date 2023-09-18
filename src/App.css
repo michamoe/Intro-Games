@@ -4,7 +4,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
+}
+
+.container.start {
+  position: relative;
+  top: -125px;
+}
+
+.container.start button:hover {
+  background-color: rgb(254, 0, 68);
 }
 
 .gradient {
@@ -26,8 +34,9 @@
   background-repeat: no-repeat;
   width: 644px;
   height: 870px;
-  position: relative;
-  top: -60px;
+  position: absolute;
+  top: 150px;
+  overflow: hidden;
 }
 
 .animation {
@@ -49,9 +58,9 @@
 }
 
 .start {
-  position: relative;
+  position: absolute;
   text-align: center;
-  top: 350px;
+  top: 400px;
   z-index: 10;
 }
 
