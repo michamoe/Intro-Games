@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import NavBar from "./NavBar";
-const music = "./src/assets/loop.mp3";
+const music = "/loop.mp3";
 
 function start() {
   let navigate = useNavigate();
