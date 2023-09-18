@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ProgressBar } from "react-bootstrap";
+import { motion } from "framer-motion";
 import useContentful from "../hooks/useContentful";
 import NavBar from "./NavBar";
 import "./games.css";
@@ -9,50 +10,74 @@ function Games() {
   const { getContent } = useContentful();
   const [sort, setSort] = useState();
 
-  const sortList = ["fields.rating", "-fields.rating", "fields.published", "-fields.published", 
-                    "fields.company", "-fields.company"];
-  
-  const ratingUp = () => {
-    setSort(sortList[0]) 
-  }
-  const ratingDown = () => {
-    setSort(sortList[1]) 
-  }
-  const publishedUp = () => {
-    setSort(sortList[2]) 
-  }
-  const publishedDown = () => {
-    setSort(sortList[3]) 
-  }
-  const companyUp = () => {
-    setSort(sortList[4]) 
-  }
-  const companyDown = () => {
-    setSort(sortList[5]) 
-  }
+  const sortList = [
+    "fields.rating",
+    "-fields.rating",
+    "fields.published",
+    "-fields.published",
+    "fields.company",
+    "-fields.company",
+  ];
 
-  
+  const ratingUp = () => {
+    setSort(sortList[0]);
+  };
+  const ratingDown = () => {
+    setSort(sortList[1]);
+  };
+  const publishedUp = () => {
+    setSort(sortList[2]);
+  };
+  const publishedDown = () => {
+    setSort(sortList[3]);
+  };
+  const companyUp = () => {
+    setSort(sortList[4]);
+  };
+  const companyDown = () => {
+    setSort(sortList[5]);
+  };
+
   useEffect(() => {
-    getContent("game", "fields.published").then((response) => setGames(response));
+    getContent("game", "fields.published").then((response) =>
+      setGames(response)
+    );
   }, []);
   useEffect(() => {
     getContent("game", sort).then((response) => setGames(response));
   }, [sort]);
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
       <NavBar />
       <div className="gradient"></div>
       <div className="all">
         <h1 className="head">Indie + Retro Games</h1>
         <div className="btn">
-          <button className='ratingup-btn' onClick={ratingUp}>Rating ↑</button>
-          <button className='ratingdown-btn' onClick={ratingDown}>Rating ↓</button>
-          <button className='publishedup-btn' onClick={publishedUp}>Published ↑</button>
-          <button className='publisheddown-btn' onClick={publishedDown}>Published ↓</button>
-          <button className='companyup-btn' onClick={companyUp}>Company ↑</button>
-          <button className='companydown-btn' onClick={companyDown}>Company ↓</button>
+          <button className="ratingup-btn" onClick={ratingUp}>
+            Rating ↑
+          </button>
+          <button className="ratingdown-btn" onClick={ratingDown}>
+            Rating ↓
+          </button>
+          <button className="publishedup-btn" onClick={publishedUp}>
+            Published ↑
+          </button>
+          <button className="publisheddown-btn" onClick={publishedDown}>
+            Published ↓
+          </button>
+          <button className="companyup-btn" onClick={companyUp}>
+            Company ↑
+          </button>
+          <button className="companydown-btn" onClick={companyDown}>
+            Company ↓
+          </button>
         </div>
-        
+
         {games
           ? games.items.map((game, key) => {
               return (
@@ -96,12 +121,11 @@ function Games() {
             })
           : "No Results"}
       </div>
-    </>
+    </motion.div>
   );
 }
 
 export default Games;
-
 
 /*
 const sortFun = {

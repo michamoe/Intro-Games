@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import useContentful from "../hooks/useContentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import { motion } from "framer-motion";
 import NavBar from "./NavBar";
 import "./article.css";
 
@@ -34,7 +35,12 @@ function ArticleGames() {
   }
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
       <NavBar />
       <div className="gradient"></div>
       <div className="articlebg">
@@ -54,7 +60,7 @@ function ArticleGames() {
             : "No Results"}
         </div>
       </div>
-    </>
+    </motion.div>
   );
 }
 

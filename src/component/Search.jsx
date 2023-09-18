@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { Button, Col, Container, Form, Row, Card } from "react-bootstrap";
+import { motion } from "framer-motion";
 import NavBar from "./NavBar";
 import useContentful from "../hooks/useContentful";
-import { Button, Col, Container, Form, Row, Card } from "react-bootstrap";
 import "./search.css";
 
 function Search() {
@@ -43,7 +44,12 @@ function Search() {
   }, [search]);
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
       <NavBar />
       <div className="gradient"></div>
       <Container className="mt-5">
@@ -91,8 +97,7 @@ function Search() {
           </Col>
         </Row>
       </Container>
-      {/* </div> */}
-    </>
+    </motion.div>
   );
 }
 
