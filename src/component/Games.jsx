@@ -41,6 +41,7 @@ function Games() {
   return (
     <>
       <NavBar />
+      <div className="gradient"></div>
       <div className="all">
         <h1 className="head">Indie + Retro Games</h1>
         <div className="btn">
