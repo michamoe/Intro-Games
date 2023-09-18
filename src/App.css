@@ -1,34 +1,18 @@
-nav {
-  margin: 10px;
-  font-family: sans-serif;
-  display: block;
-  background-color: rgb(56, 22, 137);
-}
-nav > ul {
-  list-style: none;
-}
-.links > li {
-  display: inline-block;
-  width: 150px;
-  margin-left: 2px;
-}
-
-a {
-  text-decoration: none;
-}
-
-.links > li > a.active {
-  background-color: #efefef;
-  color: black;
-}
-
 .container {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
+}
+
+.container.start {
+  position: relative;
+  top: -125px;
+}
+
+.container.start button:hover {
+  background-color: rgb(254, 0, 68);
 }
 
 .gradient {
@@ -50,8 +34,9 @@ a {
   background-repeat: no-repeat;
   width: 644px;
   height: 870px;
-  position: relative;
-  top: -60px;
+  position: absolute;
+  top: 150px;
+  overflow: hidden;
 }
 
 .animation {
@@ -73,9 +58,9 @@ a {
 }
 
 .start {
-  position: relative;
+  position: absolute;
   text-align: center;
-  top: 350px;
+  top: 400px;
   z-index: 10;
 }
 
@@ -83,8 +68,4 @@ a {
   min-width: 300px;
   margin-bottom: 10px;
   z-index: 11;
-}
-
-.searchresults {
-  margin-top: 10px;
 }
