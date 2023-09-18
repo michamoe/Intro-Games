@@ -36,7 +36,7 @@ function ArticleGames() {
   return (
     <>
       <NavBar />
-
+      <div className="gradient"></div>
       <div className="articlebg">
         <div className="container">
           {articles
