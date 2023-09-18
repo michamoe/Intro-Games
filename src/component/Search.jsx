@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import useContentful from "../hooks/useContentful";
-import { ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button, Col, Container, Form, Row, Card } from "react-bootstrap";
+import "./search.css";
 
 function Search() {
   const { searchArchivedGames } = useContentful();
@@ -22,9 +23,16 @@ function Search() {
 
   const [search, setSearch] = useState("");
   const [showResults, setShowresults] = useState([]);
+
   const handleChange = (e) => {
+    e.preventDefault();
     setSearch(e.target.value);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   function filterItems(arr, query) {
     return arr.filter((el) => el.toLowerCase().includes(query.toLowerCase()));
   }
@@ -38,25 +46,52 @@ function Search() {
     <>
       <NavBar />
       <div className="gradient"></div>
-      <div className="container">
-        <div>
-          <input
-            type="text"
-            placeholder="Search"
-            value={search}
-            onChange={handleChange}
-          />
-        </div>
-        <ListGroup className="searchresults">
-          {search.length >= 2 ? (
-            showResults.map((element, key) => (
-              <ListGroupItem key={key}>{element}</ListGroupItem>
-            ))
-          ) : (
-            <ListGroupItem key="0">No results</ListGroupItem>
-          )}
-        </ListGroup>
-      </div>
+      <Container className="mt-5">
+        <Row>
+          <Col>
+            <Form className="d-flex" onSubmit={handleSubmit}>
+              <Form.Control
+                name="search"
+                size="lg"
+                type="text"
+                placeholder="Search"
+                className="me-2 rounded-pill"
+                value={search}
+                onChange={handleChange}
+              />
+              <Button className="rounded-pill" variant="warning">
+                Search
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+      <Container>
+        <Row>
+          <Col>
+            {search.length >= 2
+              ? showResults.map((element, key) => (
+                  <Card
+                    border="warning"
+                    style={{
+                      width: "30rem",
+                      marginBottom: "2rem",
+                      marginTop: "1rem",
+                    }}
+                    key={key}
+                  >
+                    <Card.Header>Game</Card.Header>
+                    <Card.Body>
+                      <Card.Title>{element}</Card.Title>
+                      <Card.Text>Missing infos</Card.Text>
+                    </Card.Body>
+                  </Card>
+                ))
+              : ""}
+          </Col>
+        </Row>
+      </Container>
+      {/* </div> */}
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import NavBar from "./NavBar";
 const music = "./src/assets/loop.mp3";
 
 function start() {
@@ -12,6 +13,10 @@ function start() {
     let path = `/games`;
     navigate(path);
   };
+  const goArchive = () => {
+    let path = `/search`;
+    navigate(path);
+  };
 
   return (
     <>
@@ -19,17 +24,26 @@ function start() {
       <main className="container">
         <div className="start">
           <div>
-            <Button onClick={goArticles}>ARTICLES</Button>
+            <Button variant="warning" onClick={goArticles}>
+              ARTICLES
+            </Button>
           </div>
           <div>
-            <Button onClick={goGames}>GAMELIST</Button>
+            <Button variant="warning" onClick={goGames}>
+              GAMELIST
+            </Button>
+          </div>
+          <div>
+            <Button variant="warning" onClick={goArchive}>
+              ARCHIVE
+            </Button>
           </div>
         </div>
         <div className="arcade">
           <div className="animation"></div>{" "}
           <div className="audio">
             <figure>
-              <audio controls src={music} loop={true}></audio>
+              <audio id="player" controls src={music} loop={true}></audio>
             </figure>
           </div>
         </div>
