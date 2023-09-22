@@ -4,6 +4,9 @@ command = "npm run build"
 functions = "netlify/functions"
 publish = "dist"
 
+# [dev]
+# command = ""
+
 [[redirects]]
 from = "/*"
 to = "/index.html"

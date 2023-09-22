@@ -47,81 +47,83 @@ function Games() {
     getContent("game", sort).then((response) => setGames(response));
   }, [sort]);
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.2 }}
-    >
-      <NavBar />
-      <div className="gradient"></div>
-      <div className="all">
-        <h1 className="head">Indie + Retro Games</h1>
-        <div className="btn">
-          <button className="ratingup-btn" onClick={ratingUp}>
-            Rating ↑
-          </button>
-          <button className="ratingdown-btn" onClick={ratingDown}>
-            Rating ↓
-          </button>
-          <button className="publishedup-btn" onClick={publishedUp}>
-            Published ↑
-          </button>
-          <button className="publisheddown-btn" onClick={publishedDown}>
-            Published ↓
-          </button>
-          <button className="companyup-btn" onClick={companyUp}>
-            Company ↑
-          </button>
-          <button className="companydown-btn" onClick={companyDown}>
-            Company ↓
-          </button>
-        </div>
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        <NavBar />
+        <div className="gradient"></div>
+        <div className="all">
+          <h1 className="head">Indie + Retro Games</h1>
+          <div className="btn">
+            <button className="ratingup-btn" onClick={ratingUp}>
+              Rating ↑
+            </button>
+            <button className="ratingdown-btn" onClick={ratingDown}>
+              Rating ↓
+            </button>
+            <button className="publishedup-btn" onClick={publishedUp}>
+              Published ↑
+            </button>
+            <button className="publisheddown-btn" onClick={publishedDown}>
+              Published ↓
+            </button>
+            <button className="companyup-btn" onClick={companyUp}>
+              Company ↑
+            </button>
+            <button className="companydown-btn" onClick={companyDown}>
+              Company ↓
+            </button>
+          </div>
 
-        {games
-          ? games.items.map((game, key) => {
-              return (
-                <div className="games" key={key}>
-                  <div className="row">
-                    <div className="col d-flex justify-content-center">
-                      <h2>{game.fields.name}</h2>
-                    </div>
-                    <div className="col d-flex justify-content-center">
-                      <div className="published">{game.fields.published}</div>
-                    </div>
-                  </div>
-                  <div className="row d-flex align-items-center">
-                    <div className="col d-flex justify-content-center">
-                      <div className="company">{game.fields.company} </div>
-                    </div>
-                    <div className="col">
-                      <div className="rating">
-                        <ProgressBar
-                          key={"progress" + key}
-                          now={game.fields.rating}
-                          label={`Rating: ${game.fields.rating} / 100`}
-                        />
+          {games
+            ? games.items.map((game, key) => {
+                return (
+                  <div className="games" key={key}>
+                    <div className="row">
+                      <div className="col d-flex justify-content-center">
+                        <h2>{game.fields.name}</h2>
+                      </div>
+                      <div className="col d-flex justify-content-center">
+                        <div className="published">{game.fields.published}</div>
                       </div>
                     </div>
-                  </div>
-                  <div className="row">
-                    {game.fields.bilder?.map((bild, id, key) => (
-                      <div
-                        className="col d-flex justify-content-center"
-                        key={"img" + id + key}
-                      >
-                        <div className="images">
-                          <img src={bild.fields.file.url} />
+                    <div className="row d-flex align-items-center">
+                      <div className="col d-flex justify-content-center">
+                        <div className="company">{game.fields.company} </div>
+                      </div>
+                      <div className="col">
+                        <div className="rating">
+                          <ProgressBar
+                            key={"progress" + key}
+                            now={game.fields.rating}
+                            label={`Rating: ${game.fields.rating} / 100`}
+                          />
                         </div>
                       </div>
-                    ))}
+                    </div>
+                    <div className="row">
+                      {game.fields.bilder?.map((bild, id, key) => (
+                        <div
+                          className="col d-flex justify-content-center"
+                          key={"img" + id + key}
+                        >
+                          <div className="images">
+                            <img src={bild.fields.file.url} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              );
-            })
-          : "No Results"}
-      </div>
-    </motion.div>
+                );
+              })
+            : "No Results"}
+        </div>
+      </motion.div>
+    </>
   );
 }
 

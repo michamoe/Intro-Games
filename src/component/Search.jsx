@@ -37,6 +37,7 @@ function Search() {
   function filterItems(arr, query) {
     return arr.filter((el) => el.toLowerCase().includes(query.toLowerCase()));
   }
+
   useEffect(() => {
     if (search.length >= 2) {
       setShowresults(filterItems(results, search));
@@ -44,60 +45,70 @@ function Search() {
   }, [search]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.2 }}
-    >
-      <NavBar />
-      <div className="gradient"></div>
-      <Container className="mt-5">
-        <Row>
-          <Col>
-            <Form className="d-flex" onSubmit={handleSubmit}>
-              <Form.Control
-                name="search"
-                size="lg"
-                type="text"
-                placeholder="Search"
-                className="me-2 rounded-pill"
-                value={search}
-                onChange={handleChange}
-              />
-              <Button className="rounded-pill" variant="warning">
-                Search
-              </Button>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
-      <Container>
-        <Row>
-          <Col>
-            {search.length >= 2
-              ? showResults.map((element, key) => (
-                  <Card
-                    border="warning"
-                    style={{
-                      width: "30rem",
-                      marginBottom: "2rem",
-                      marginTop: "1rem",
-                    }}
-                    key={key}
-                  >
-                    <Card.Header>Game</Card.Header>
-                    <Card.Body>
-                      <Card.Title>{element}</Card.Title>
-                      <Card.Text>Missing infos</Card.Text>
-                    </Card.Body>
-                  </Card>
-                ))
-              : ""}
-          </Col>
-        </Row>
-      </Container>
-    </motion.div>
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        <NavBar />
+        <div className="gradient"></div>
+        <Container className="mt-5">
+          <Row>
+            <Col>
+              <Form className="d-flex" onSubmit={handleSubmit}>
+                <Form.Control
+                  name="search"
+                  size="lg"
+                  type="text"
+                  placeholder="Search"
+                  className="me-2 rounded-pill"
+                  value={search}
+                  onChange={handleChange}
+                />
+                <Button className="rounded-pill" variant="warning">
+                  Search
+                </Button>
+              </Form>
+            </Col>
+          </Row>
+        </Container>
+        <Container>
+          <Row>
+            <Col>
+              {search.length >= 2
+                ? showResults.map((element, key) => (
+                    <motion.div
+                      className="stagCard"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <Card
+                        border="warning"
+                        style={{
+                          width: "30rem",
+                          marginBottom: "2rem",
+                          marginTop: "1rem",
+                        }}
+                        key={key}
+                      >
+                        <Card.Header>Game</Card.Header>
+                        <Card.Body>
+                          <Card.Title>{element}</Card.Title>
+                          <Card.Text>Missing infos</Card.Text>
+                        </Card.Body>
+                      </Card>
+                    </motion.div>
+                  ))
+                : ""}
+            </Col>
+          </Row>
+        </Container>
+      </motion.div>
+    </>
   );
 }
 
