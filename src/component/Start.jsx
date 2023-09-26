@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { motion } from "framer-motion";
 const music = "/loop.mp3";
 
 function start() {
@@ -18,7 +19,12 @@ function start() {
   };
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="gradient"></div>
       <div className="wave"></div>
       <div className="wave"></div>
@@ -50,7 +56,7 @@ function start() {
           </div>
         </div>
       </main>
-    </>
+    </motion.div>
   );
 }
 
